@@ -1,0 +1,30 @@
+name: Front pipeline
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  unit-test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: install dependencies
+        uses: npm install
+
+      - name: run unit tests
+        uses: npm run test
+
+  code-quality-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: install dependecies
+        uses: npm install
+
+      - name: run unit test
+        uses: npm run lint
